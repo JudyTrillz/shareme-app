@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logowhite.png";
 import share from "../assets/share.mp4";
 
+import { client } from "../client";
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -16,15 +18,29 @@ const Login = () => {
   const signIn = useGoogleLogin({
     onSuccess: async (response) => {
       try {
+        // fetch the logged in user data =====>>
         const res = await fetch("https://www.googleapis.com/oauth2/v1/userinfo", {
           headers: {
             Authorization: `Bearer ${response.access_token}`,
           },
         });
         if (res.ok) {
+          // Convert user data to json and save to localStorage =====>>
           const userInfo = await res.json();
-          console.log(userInfo);
-          navigate("/");
+          localStorage.setItem("user", JSON.stringify(userInfo));
+          const { name, id, picture } = userInfo;
+
+          // Create a new sanity document for the signed in user and save it to the database=====>>
+          const doc = {
+            _id: id,
+            _type: "user",
+            userName: name,
+            image: picture,
+          };
+
+          client.createIfNotExists(doc).then(() => {
+            navigate("/", { replace: true });
+          });
         } else {
           throw new Error("Failed to fetch user information");
         }
