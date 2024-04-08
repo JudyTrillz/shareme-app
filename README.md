@@ -9,7 +9,7 @@ Sanity CMS studio for the backend.
 - Learned how to create a sanity studio and create schemas which are documents with field
   for the backend.
 - Learned how to integrate google authentication using react oauth.
-- Learned how to get user info using the fetch api to make use of the data in the frontend
+- Learned how to `get user info using the fetch api to make use of the data in the frontend
 - Learned how to decode credentials using jwt-decode but i didn't use it in the project
   because the fetch api was easier.
 - Learned how to link the frontend to the sanity backend using the sanity client function.

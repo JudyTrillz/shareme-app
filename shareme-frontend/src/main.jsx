@@ -8,7 +8,8 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="173498473237-3e6vd7dnn1cqhdbm8pnhggflmdc698h5.apps.googleusercontent.com">
+    {/* CHANGE CLIENT ID TO .env */}
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_SHAREME_CLIENT_ID}>
       <Router>
         <Routes>
           <Route

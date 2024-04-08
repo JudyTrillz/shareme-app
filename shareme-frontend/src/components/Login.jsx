@@ -1,8 +1,8 @@
-import { useGoogleLogin } from "@react-oauth/google"; //For custom button
-import { FcGoogle } from "react-icons/fc"; //For custom button
+import { useGoogleLogin } from "@react-oauth/google"; //* For custom button
+import { FcGoogle } from "react-icons/fc"; //* For custom button
 
-// import { jwtDecode } from "jwt-decode"; // For google default button
-// import { GoogleLogin } from "@react-oauth/google"; // For google default button
+// import { jwtDecode } from "jwt-decode"; //! For google default button
+// import { GoogleLogin } from "@react-oauth/google"; //! For google default button
 
 // * OTHER IMPORTS
 import { useNavigate } from "react-router-dom";

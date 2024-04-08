@@ -1,0 +1,57 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Share Me Full stack tour",
+  "steps": [
+    {
+      "file": "shareme-frontend/src/main.jsx",
+      "description": "1. Import Browser router, Route, Routes to enable routing in the app.\r\n",
+      "line": 6
+    },
+    {
+      "file": "shareme-frontend/src/main.jsx",
+      "description": "Import GoogleOAuthProvider from @react-oauth/google to enable google authentication.",
+      "line": 7
+    },
+    {
+      "file": "shareme-frontend/src/main.jsx",
+      "description": "Wrapped the entire app with the GoogleOAuthProvider and provided the client id to make the app ready to use google authentication",
+      "line": 12
+    },
+    {
+      "file": "shareme-frontend/src/main.jsx",
+      "description": "Wrapped the entire app within the google auth provider with the router and routes tag to enable routing in the app.",
+      "line": 13
+    },
+    {
+      "file": "shareme-frontend/src/App.jsx",
+      "description": "Using the Routes and route tag to route all elements in application",
+      "line": 7
+    },
+    {
+      "file": "shareme-frontend/src/components/Login.jsx",
+      "description": "This signin function is used for the google authentication signup which creates the user and onSuccess and uses the fetch api to get the info of the signed in user from the google api. If the response is ok, it creates a ne document in the backend linked to the sanity content lake throught the client...",
+      "line": 18
+    },
+    {
+      "file": "shareme-frontend/src/components/Login.jsx",
+      "description": "This is the document created. the _id serves as the googleID, the _type: 'user' is refered to the user schema which is where all the signed in users are stored.",
+      "line": 34
+    },
+    {
+      "file": "shareme-frontend/src/components/Login.jsx",
+      "description": "After the user is created to the backend the client.createIfNotExits takes the doc object above and send it to the appropriate schema type which is the user schema. if it already exists, it replaces it and navigates to the home page.",
+      "line": 41
+    },
+    {
+      "file": "shareme-frontend/src/client.jsx",
+      "description": "This entire block of code is the client that connects the frontend (REACT APPLICATION) to the backend (SANITY STUDIO).\r\n\r\nimport { createClient } from \"@sanity/client\";\r\nimport imageUrlBuilder from \"@sanity/image-url\";\r\n\r\nexport const client = createClient({\r\n  projectId: process.env.REACT_APP_SHAREME_PROJECT_ID,\r\n  dataset: \"production\",\r\n  apiVersion: \"2024-04-07\",\r\n  useCdn: true,\r\n  token: process.env.REACT_APP_SHAREME_PROJECT_TOKEN,\r\n});\r\n\r\nconst builder = imageUrlBuilder(client);\r\n\r\nexport const urlFor = (source) => builder.image(source);",
+      "line": 1
+    },
+    {
+      "file": "shareme-frontend/.env",
+      "description": "the use of enviroment variables to store confidential data of the app for optimum security",
+      "line": 1
+    }
+  ],
+  "ref": "main"
+}
