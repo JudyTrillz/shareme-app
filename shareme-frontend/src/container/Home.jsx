@@ -55,9 +55,9 @@ const Home = () => {
             />
           </Link>
 
-          <Link to={`user-profile/${userInfo?.id}`}>
+          <Link to={`user-profile/${user?.id}`}>
             <img
-              src={userInfo?.picture}
+              src={user?.image}
               alt="Profile picture"
             />
           </Link>
@@ -74,7 +74,7 @@ const Home = () => {
             </div>
 
             <SideBar
-              user={userInfo && userInfo}
+              user={user && user}
               closeToggle={setToggleSideBar}
             />
           </div>
@@ -92,7 +92,7 @@ const Home = () => {
 
           <Route
             path="*"
-            element={<Pins user={userInfo && userInfo} />}
+            element={<Pins user={user && user} />}
           />
         </Routes>
       </div>

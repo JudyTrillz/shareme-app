@@ -4,7 +4,7 @@ import { IoMdAdd, IoMdSearch } from "react-icons/io";
 const NavBar = ({ searchTerm, setSearchTerm, user }) => {
   const navigate = useNavigate();
 
-  // if (!user) return null;
+  if (!user) return null;
 
   return (
     <div className="flex gap-2 md:gap-5 w-full mt-5 pb-7">
@@ -30,7 +30,7 @@ const NavBar = ({ searchTerm, setSearchTerm, user }) => {
       <div className="flex gap-3">
         <Link to={`user-profile/${user?.id}`}>
           <img
-            src={user.picture}
+            src={user?.image}
             alt="user image"
             loading="lazy"
             className="w-14 h-12 rounded-lg hidden md:block"
