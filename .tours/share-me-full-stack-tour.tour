@@ -96,6 +96,11 @@
       "file": "shareme-frontend/src/components/SideBar.jsx",
       "description": "just a side note to an error i made while coding this, ...... this checks if the sidebar is open(true) and sets it to close(false)",
       "line": 25
+    },
+    {
+      "file": "shareme-frontend/src/container/Pins.jsx",
+      "description": "This state will be used for our search component to help filter pins either by name or categories",
+      "line": 7
     }
   ],
   "ref": "main"

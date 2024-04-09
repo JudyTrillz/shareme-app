@@ -91,8 +91,8 @@ const Home = () => {
           />
 
           <Route
-            path="/"
-            element={<Pins user={user && user} />}
+            path="*"
+            element={<Pins user={userInfo && userInfo} />}
           />
         </Routes>
       </div>
