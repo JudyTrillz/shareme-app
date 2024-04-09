@@ -51,6 +51,51 @@
       "file": "shareme-frontend/.env",
       "description": "the use of enviroment variables to store confidential data of the app for optimum security",
       "line": 1
+    },
+    {
+      "file": "shareme-frontend/src/container/Home.jsx",
+      "description": "When working in the home component, we gt\\et the user from the localstorage that was saved immediately after the user signed in. We then check if the item from the local storage is not  = undefined. if not = undefined, we parse the object to the user info then if it is = undefined, we simply clear the local storage",
+      "line": 14
+    },
+    {
+      "file": "shareme-frontend/src/utils/Data.js",
+      "description": "Created a sanity query using a specific syntax from sanity to get the user data and the user id.\r\n\r\nTHE QUERY CODE SIMPLY MEANS: GET ME A DOCUMENT OOF TYPE USER WHICH HAS AN ID PROPERTY.",
+      "line": 1
+    },
+    {
+      "file": "shareme-frontend/src/container/Home.jsx",
+      "description": "Remeber when we saved the user info to the local storage when we signed in the first time? Now we are  getting the user info so we can use it inside of the query. ",
+      "line": 15
+    },
+    {
+      "file": "shareme-frontend/src/container/Home.jsx",
+      "description": "in this useEffect, we are atually loading the user info directly from sanity. In our query from Data.js, the user id we passed in is the userinfo googleId. and then we use the client to fetchthe query based on the google id from the local storage and set the user to that particular id.",
+      "line": 22
+    },
+    {
+      "file": "shareme-frontend/src/components/SideBar.jsx",
+      "description": "Using the isActive class that comes as a prop from the Navlink component from the react router dom, We created a style for when it is active (isActiveStyle) and when it is not active (isNotActiveStyle)",
+      "line": 6
+    },
+    {
+      "file": "shareme-frontend/src/components/SideBar.jsx",
+      "description": "This is where we used the isActive prop from navlink as a ternary statement to check if the navlink is active or not",
+      "line": 43
+    },
+    {
+      "file": "shareme-frontend/src/components/SideBar.jsx",
+      "description": "Created a mock categories which we used to create a demo category list on our sidebar.",
+      "line": 12
+    },
+    {
+      "file": "shareme-frontend/src/components/SideBar.jsx",
+      "description": "In this step, we first slice the list of categories from the first element to the last element because we don't want the last element to be visible on the page. After that, we map each category and create a link with the category names.",
+      "line": 53
+    },
+    {
+      "file": "shareme-frontend/src/components/SideBar.jsx",
+      "description": "just a side note to an error i made while coding this, ...... this checks if the sidebar is open(true) and sets it to close(false)",
+      "line": 25
     }
   ],
   "ref": "main"
