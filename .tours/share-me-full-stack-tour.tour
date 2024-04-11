@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Share Me Full stack tour",
+  "title": "Share Me Full stack tour | Shows my list of complex actions",
   "steps": [
     {
       "file": "shareme-frontend/src/main.jsx",
@@ -29,7 +29,7 @@
     },
     {
       "file": "shareme-frontend/src/components/Login.jsx",
-      "description": "This signin function is used for the google authentication signup which creates the user and onSuccess and uses the fetch api to get the info of the signed in user from the google api. If the response is ok, it creates a ne document in the backend linked to the sanity content lake throught the client...",
+      "description": "This signin function is used for the google authentication signup which creates the user and onSuccess and uses the fetch api to get the info of the signed in user from the google api. If the response is ok, it creates a new document in the backend linked to the sanity content lake throught the client...",
       "line": 18
     },
     {
@@ -54,12 +54,12 @@
     },
     {
       "file": "shareme-frontend/src/container/Home.jsx",
-      "description": "When working in the home component, we gt\\et the user from the localstorage that was saved immediately after the user signed in. We then check if the item from the local storage is not  = undefined. if not = undefined, we parse the object to the user info then if it is = undefined, we simply clear the local storage",
+      "description": "When working in the home component, we get the user from the localstorage that was saved immediately after the user signed in. We then check if the item from the local storage is not  = undefined. if not = undefined, we parse the object and use the object to fetch the user details directly from our sanity backend. And if user info  is = undefined, we simply clear the local storage",
       "line": 14
     },
     {
       "file": "shareme-frontend/src/utils/Data.js",
-      "description": "Created a sanity query using a specific syntax from sanity to get the user data and the user id.\r\n\r\nTHE QUERY CODE SIMPLY MEANS: GET ME A DOCUMENT OOF TYPE USER WHICH HAS AN ID PROPERTY.",
+      "description": "Created a sanity query using a specific syntax from sanity to get the user data and the user id.\r\n  const query = `*[_type == \"user\" && _id == '${userId}']`;\r\n\r\nTHE QUERY CODE SIMPLY MEANS: GET ME A DOCUMENT OOF TYPE USER WHICH HAS AN ID PROPERTY.",
       "line": 1
     },
     {
@@ -84,8 +84,18 @@
     },
     {
       "file": "shareme-frontend/src/components/SideBar.jsx",
-      "description": "Created a mock categories which we used to create a demo category list on our sidebar.",
+      "description": "Created a mock categories which we used to create a demo category list on our sidebar. These categories will be later changed and gotten directly from sanity and will be used to filter through different PINS.",
       "line": 12
+    },
+    {
+      "file": "shareme-frontend/src/utils/Data.js",
+      "description": "*[_type == \"pin\" && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']: This part of the query specifies the selection criteria for the pins. It uses the * selector to select all documents of type \"pin\" (_type == \"pin\"). The && operator combines multiple conditions:\r\n\r\ntitle match '${searchTerm}*': This condition ensures that the pin's title matches the searchTerm provided by the user. The match keyword performs a full-text search on the specified field (title in this case), looking for terms that start with searchTerm.\r\ncategory match '${searchTerm}*': Similarly, this condition searches for pins whose category matches the searchTerm.\r\nabout match '${searchTerm}*': This condition searches for pins whose \"about\" field matches the searchTerm.\r\n{ ... }: This block defines the fields to retrieve for each pin that matches the selection criteria specified in the filter expression.\r\n\r\nimage { asset -> { url } }: This retrieves the URL of the image associated with each pin. It follows a reference to the asset document associated with the pin's image and retrieves its URL.\r\n_id: This retrieves the unique identifier of each pin.\r\ndestination: This retrieves the destination field of each pin.\r\npostedBy -> { _id, userName, image }: This retrieves information about the user who posted each pin. It follows a reference to the user document (postedBy) and retrieves its _id, userName, and image fields.\r\nsave[] { _key, postedBy -> { -id, userName, image } }: This retrieves information about users who have saved each pin. The save[] array contains references to the users who saved the pin. For each saved entry, it retrieves the _key field (which likely represents the save action) and information about the user who saved the pin, including their _id, userName, and image.",
+      "line": 7
+    },
+    {
+      "file": "shareme-frontend/src/components/Feed.jsx",
+      "description": "Creating a useEffect that will run anytime the search term changes. The search term which is the categoryId is passed into the search query. When the search is matched, we use the client.fetch to get the query which returns a data and we set the current pins on the page to the data. See previous step to know how and what type of data we got from the sanity content lake.",
+      "line": 13
     },
     {
       "file": "shareme-frontend/src/components/SideBar.jsx",
@@ -99,8 +109,43 @@
     },
     {
       "file": "shareme-frontend/src/container/Pins.jsx",
-      "description": "This state will be used for our search component to help filter pins either by name or categories",
+      "description": "This state will be used for our search component to help filter pins either by name or categories and also to give the search box a single source of truth",
       "line": 7
+    },
+    {
+      "file": "shareme-frontend/src/utils/Data.js",
+      "description": "*[_type == \"pin\" && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']: This part of the query specifies the selection criteria for the pins. It uses the * selector to select all documents of type \"pin\" (_type == \"pin\"). The && operator combines multiple conditions:\r\n\r\ntitle match '${searchTerm}*': This condition ensures that the pin's title matches the searchTerm provided by the user. The match keyword performs a full-text search on the specified field (title in this case), looking for terms that start with searchTerm.\r\ncategory match '${searchTerm}*': Similarly, this condition searches for pins whose category matches the searchTerm.\r\nabout match '${searchTerm}*': This condition searches for pins whose \"about\" field matches the searchTerm.\r\n{ ... }: This block defines the fields to retrieve for each pin that matches the selection criteria specified in the filter expression.\r\n\r\nimage { asset -> { url } }: This retrieves the URL of the image associated with each pin. It follows a reference to the asset document associated with the pin's image and retrieves its URL.\r\n_id: This retrieves the unique identifier of each pin.\r\ndestination: This retrieves the destination field of each pin.\r\npostedBy -> { _id, userName, image }: This retrieves information about the user who posted each pin. It follows a reference to the user document (postedBy) and retrieves its _id, userName, and image fields.\r\nsave[] { _key, postedBy -> { -id, userName, image } }: This retrieves information about users who have saved each pin. The save[] array contains references to the users who saved the pin. For each saved entry, it retrieves the _key field (which likely represents the save action) and information about the user who saved the pin, including their _id, userName, and image.",
+      "line": 7
+    },
+    {
+      "file": "shareme-frontend/src/utils/Data.js",
+      "description": "This query is to get the list of all pins and used to get all the items not in the category.",
+      "line": 34
+    },
+    {
+      "file": "shareme-frontend/src/components/Feed.jsx",
+      "description": "This useEffect runs  function when the category id is changed. it uses the searchQuery function from data.js to search for list of pins that matches the search term in other words, the category id. We then use the client to fetch the data from the query and set the pins to the data. But this happens only when we have a categoryId else we get all th pins. SEE LAST TWO STEPS TO KNOW THE QUERY. ",
+      "line": 13
+    },
+    {
+      "file": "shareme-frontend/src/components/Feed.jsx",
+      "description": "After we have gotten the data and saved it to the setPins(data), we then render a MasonryLayout component to display the layout if the pins exists.",
+      "line": 32
+    },
+    {
+      "file": "shareme-frontend/src/components/MasonryLayout.jsx",
+      "description": "this breakpointObj is a list of breakpoints used by the masonry layout css",
+      "line": 4
+    },
+    {
+      "file": "shareme-frontend/src/components/MasonryLayout.jsx",
+      "description": "We import Masonry from masonry-css and use it to render out individual pins gotten from out query on the feedback. In this masonry, we assign the breakpointObj to the breakpointCols which is a default attribute of the masonry css and then we map through the pins. for each pin, we render a Pin component and pass the pin as prop to it.",
+      "line": 16
+    },
+    {
+      "file": "shareme-frontend/src/components/Pin.jsx",
+      "description": "In this component, we destructure each pin and get any value we want from the pin. such as: postedBy, image, _id, destination etc",
+      "line": 11
     }
   ],
   "ref": "main"
