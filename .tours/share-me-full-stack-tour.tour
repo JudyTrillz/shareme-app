@@ -146,6 +146,26 @@
       "file": "shareme-frontend/src/components/Pin.jsx",
       "description": "In this component, we destructure each pin and get any value we want from the pin. such as: postedBy, image, _id, destination etc",
       "line": 11
+    },
+    {
+      "file": "shareme-frontend/src/components/Pin.jsx",
+      "description": "When we want to save an item or a pin, we check if the user have already saved the pin before. If he has we display a button if not, we display another button. but to check if he has, we need access to the userInfo which we can acces from the localStorage. But because we have that function in multiple places, we created a util function. See src/util/fetchUser.js for more info.",
+      "line": 50
+    },
+    {
+      "file": "shareme-frontend/src/components/MasonryLayout.jsx",
+      "description": "This is the lis of breakpoints  use by masonry layout css.",
+      "line": 4
+    },
+    {
+      "file": "shareme-frontend/src/components/Pin.jsx",
+      "description": "This save pin function is a function used to save a particular pin and patch the vlaues to the sanity document. In the function we check if the user have already saved the post: if(!alreadySaved) => we set save post to true and the we use our sanity client to patch the id, setIfMissing a save property to the pin document; sets an attribute of the document if it does not exist already and then insert into the save and what we want to save into the document. After this functionis complete, we do a commit().then() {window.location.reload() setSavePost(false)}",
+      "line": 22
+    },
+    {
+      "file": "shareme-frontend/src/components/Pin.jsx",
+      "description": "This deletePin function is using the client linking to our backend to delete a specific post based on the id",
+      "line": 47
     }
   ],
   "ref": "main"

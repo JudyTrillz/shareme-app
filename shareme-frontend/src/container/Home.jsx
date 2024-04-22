@@ -8,16 +8,14 @@ import Pins from "./Pins";
 import { client } from "../client";
 import logo from "../assets/logo.png";
 import { userQuery } from "../utils/Data";
+import { fetchUser } from "../utils/fetchUser";
 
 const Home = () => {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
 
-  const userInfo =
-    localStorage.getItem("user") !== "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+  const userInfo = fetchUser();
 
   useEffect(() => {
     const query = userQuery(userInfo?.id);
@@ -55,7 +53,7 @@ const Home = () => {
             />
           </Link>
 
-          <Link to={`user-profile/${user?.id}`}>
+          <Link to={`user-profile/${user?._id}`}>
             <img
               src={user?.image}
               alt="Profile picture"
