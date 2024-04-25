@@ -166,6 +166,11 @@
       "file": "shareme-frontend/src/components/Pin.jsx",
       "description": "This deletePin function is using the client linking to our backend to delete a specific post based on the id",
       "line": 47
+    },
+    {
+      "file": "shareme-frontend/src/components/CreateAPin.jsx",
+      "description": "This upload image function is used for uploading images to sanity. We first get the file type const { type, name } = e.target.files[0]; and then check if the type of the file fits our requirements e.g jpeg, png, gif, tiff, svg+xml. When it does, we set setWrongImageType(false) and then setLoading to true to wait for how long it will take thw upload to generate the image using the client.assets.upload(\"image\", e.target.files[0], {\r\n          contentType: type,\r\n          filename: name,\r\n        })",
+      "line": 23
     }
   ],
   "ref": "main"
