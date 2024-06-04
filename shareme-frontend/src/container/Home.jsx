@@ -53,7 +53,7 @@ const Home = () => {
             />
           </Link>
 
-          <Link to={`user-profile/${user?._id}`}>
+          <Link to={`/user-profile/${user?._id}`}>
             <img
               src={user?.image}
               alt="Profile picture"
@@ -81,7 +81,8 @@ const Home = () => {
 
       <div
         className="pb-2 flex-1 h-screen overflow-y-scroll"
-        ref={scrollRef}>
+        ref={scrollRef}
+      >
         <Routes>
           <Route
             path="/user-profile/:userId"

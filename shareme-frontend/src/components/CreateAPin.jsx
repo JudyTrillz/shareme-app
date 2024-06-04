@@ -20,7 +20,7 @@ const CreateAPin = ({ user }) => {
 
   const navigate = useNavigate();
 
-  // UpLoad Image functionality =====>>
+  // Select Image functionality =====>>
   const uploadImage = (e) => {
     const { type, name } = e.target.files[0];
 
@@ -48,6 +48,10 @@ const CreateAPin = ({ user }) => {
         });
     } else {
       setWrongImageType(true);
+
+      setTimeout(() => {
+        setWrongImageType(false);
+      }, 3000);
     }
   };
 
@@ -58,7 +62,7 @@ const CreateAPin = ({ user }) => {
         _type: "pin",
         title,
         about,
-        destination,
+        destination: `https://${destination}`,
         image: {
           _type: "image",
           asset: {
@@ -96,9 +100,11 @@ const CreateAPin = ({ user }) => {
       {/* This div is for the the image selection. */}
       <div className="flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5 w-ful">
         <div className="bg-secondaryColor p-3 flex flex-0.7 w-full">
-          <div className="flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420">
+          <div className="flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420 text-center">
             {loading && <Spinner />}
-            {wrongImageType && <p>Wrong image format.</p>}
+            {wrongImageType && (
+              <p className="text-red-500">Wrong image format.</p>
+            )}
             {!imageAsset ? (
               <label>
                 <div className="flex flex-col items-center justify-center h-full cursor-pointer">
@@ -131,7 +137,8 @@ const CreateAPin = ({ user }) => {
                 <button
                   type="button"
                   className="absolute bottom-3 right-3 p-3 rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
-                  onClick={() => setImageAsset(null)}>
+                  onClick={() => setImageAsset(null)}
+                >
                   <MdDelete />
                 </button>
               </div>
@@ -184,17 +191,21 @@ const CreateAPin = ({ user }) => {
 
               <select
                 className="outline-none w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
-                onChange={(e) => setCategory(e.target.value)}>
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <option
                   value="other"
-                  className="bg-white">
+                  className="bg-white"
+                >
                   Select Category
                 </option>
 
-                {categories.map((category) => (
+                {categories.map((category, i) => (
                   <option
+                    key={i}
                     value={category.name}
-                    className="text-base border-0 outline-none capitalize bg-white text-black">
+                    className="text-base border-0 outline-none capitalize bg-white text-black"
+                  >
                     {category.name}
                   </option>
                 ))}
@@ -205,7 +216,8 @@ const CreateAPin = ({ user }) => {
               <button
                 type="button"
                 onClick={savePin}
-                className="bg-red-500 text-white font-bold p-2 rounded-full w-28 outline-none">
+                className="bg-red-500 text-white font-bold p-2 rounded-full w-28 outline-none"
+              >
                 Save Pin
               </button>
             </div>

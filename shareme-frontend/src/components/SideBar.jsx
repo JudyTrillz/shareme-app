@@ -28,7 +28,8 @@ const SideBar = ({ user, closeToggle }) => {
       <div className="flex flex-col">
         <Link
           to={"/"}
-          className="flex px-5 gap-2 my-6 pt-1 w-190 items-center">
+          className="flex px-5 gap-2 my-6 pt-1 w-190 items-center"
+        >
           <img
             src={logo}
             alt="logo"
@@ -43,7 +44,8 @@ const SideBar = ({ user, closeToggle }) => {
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }
-            onClick={handleCloseSideBar}>
+            onClick={handleCloseSideBar}
+          >
             <RiHomeFill />
             Home
           </NavLink>
@@ -58,7 +60,8 @@ const SideBar = ({ user, closeToggle }) => {
               className={({ isActive }) =>
                 isActive ? isActiveStyle : isNotActiveStyle
               }
-              onClick={handleCloseSideBar}>
+              onClick={handleCloseSideBar}
+            >
               {category.name}
             </NavLink>
           ))}
@@ -67,16 +70,17 @@ const SideBar = ({ user, closeToggle }) => {
 
       {user && (
         <Link
-          to={`user-profile/${user?._id}`}
+          to={`/user-profile/${user?._id}`}
           onClick={handleCloseSideBar}
-          className="flex my-5 mb-3 gap-2   p-2 items-center bg-white rounded-lg shadow-lg mx-3">
+          className="flex my-5 mb-3 gap-2   p-2 items-center bg-white rounded-lg shadow-lg mx-3"
+        >
           <img
-            src={user.image}
-            alt="user picture"
+            src={user?.image}
+            alt="user profile"
             className="w-10 h-10 rounded-full"
           />
 
-          <p>{user.userName}</p>
+          <p>{user?.userName}</p>
         </Link>
       )}
     </div>

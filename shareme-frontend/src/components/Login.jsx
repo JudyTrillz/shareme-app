@@ -19,11 +19,14 @@ const Login = () => {
     onSuccess: async (response) => {
       try {
         // fetch the logged in user data =====>>
-        const res = await fetch("https://www.googleapis.com/oauth2/v1/userinfo", {
-          headers: {
-            Authorization: `Bearer ${response.access_token}`,
-          },
-        });
+        const res = await fetch(
+          "https://www.googleapis.com/oauth2/v1/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
         if (res.ok) {
           // Convert user data to json and save to localStorage =====>>
           const userInfo = await res.json();
@@ -77,7 +80,8 @@ const Login = () => {
             <button
               type="button"
               className="bg-mainColor flex justify-center items-center p-3 rounded-lg outline-none"
-              onClick={signIn}>
+              onClick={signIn}
+            >
               <FcGoogle className="mr-4" />{" "}
               <span className="font-bold">Sign In with Google</span>
             </button>
