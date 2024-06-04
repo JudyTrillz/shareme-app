@@ -1,5 +1,6 @@
 import { useGoogleLogin } from "@react-oauth/google"; //* For custom button
 import { FcGoogle } from "react-icons/fc"; //* For custom button
+import { FaUser } from "react-icons/fa";
 
 // import { jwtDecode } from "jwt-decode"; //! For google default button
 // import { GoogleLogin } from "@react-oauth/google"; //! For google default button
@@ -75,7 +76,21 @@ const Login = () => {
             />
           </div>
 
-          <div className="shadow-2xl ">
+          <div className="shadow-2xl">
+            <button
+              type="button"
+              className="bg-mainColor flex gap-2 justify-center items-center p-2 rounded-lg outline-none"
+              onClick={() => {
+                localStorage.removeItem("user");
+                navigate("/");
+              }}
+            >
+              <FaUser />
+              View as Demo
+            </button>
+          </div>
+
+          <div className="shadow-2xl mt-2 ">
             {/* CUSTOM GOOGLE LOGIN BUTTON */}
             <button
               type="button"

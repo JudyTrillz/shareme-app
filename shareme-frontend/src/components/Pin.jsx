@@ -17,7 +17,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
 
   const user = fetchUser();
 
-  const alreadySaved = save?.some((item) => item.postedBy?._id === user.id);
+  const alreadySaved = save?.some((item) => item.postedBy?._id === user?.id);
 
   const savePin = (id) => {
     if (!alreadySaved) {
@@ -49,7 +49,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   };
 
   const unSavePin = (id) => {
-    const savedEntry = save?.find((item) => item.postedBy?._id === user.id);
+    const savedEntry = save?.find((item) => item.postedBy?._id === user?.id);
     const savedKey = savedEntry ? savedEntry._key : null;
 
     if (savedEntry) {
@@ -94,7 +94,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
           className="rounded-lg w-full"
         />
 
-        {postHover && (
+        {user && postHover && (
           <div
             className="absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-10"
             style={{ height: "100%" }}
@@ -151,7 +151,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 </a>
               )}
 
-              {postedBy?._id === user.id && (
+              {postedBy?._id === user?.id && (
                 <button
                   className="bg-white opacity-70 hover:opacity-100 text-black font-bold p-2 text-base rounded-3xl hover:shadow-md outline-none"
                   type="button"
