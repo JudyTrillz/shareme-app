@@ -9,14 +9,7 @@ const isNotActiveStyle =
 const isActiveStyle =
   "flex items-center px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize";
 
-const categories = [
-  { name: "Animals" },
-  { name: "Wallpapers" },
-  { name: "Photography" },
-  { name: "Gaming" },
-  { name: "Coding" },
-  { name: "Other" },
-];
+import { categories } from "../utils/Data";
 
 const SideBar = ({ user, closeToggle }) => {
   const handleCloseSideBar = () => {
@@ -62,6 +55,11 @@ const SideBar = ({ user, closeToggle }) => {
               }
               onClick={handleCloseSideBar}
             >
+              <img
+                src={category.image}
+                alt="category image"
+                className="w-8 h-8 rounded-full shadow-sm"
+              />
               {category.name}
             </NavLink>
           ))}
