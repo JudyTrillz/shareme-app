@@ -53,12 +53,14 @@ const Home = () => {
             />
           </Link>
 
-          <Link to={`/user-profile/${user?._id}`}>
-            <img
-              src={user?.image}
-              alt="Profile picture"
-            />
-          </Link>
+          {user && (
+            <Link to={`/user-profile/${user?._id}`}>
+              <img
+                src={user?.image}
+                alt="Profile picture"
+              />
+            </Link>
+          )}
         </div>
 
         {toggleSideBar && (

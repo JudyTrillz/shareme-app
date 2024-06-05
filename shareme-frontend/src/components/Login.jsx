@@ -86,7 +86,9 @@ const Login = () => {
               }}
             >
               <FaUser />
-              View as Demo
+              <span className="font-bold opacity-55 hover:opacity-100 transition duration-500 ease-in-out">
+                View as Demo User
+              </span>
             </button>
           </div>
 

@@ -20,12 +20,12 @@ const Pins = ({ user }) => {
         <Routes>
           <Route
             path="/"
-            element={<Feed />}
+            element={<Feed user={user} />}
           />
 
           <Route
             path="/category/:categoryId"
-            element={<Feed />}
+            element={<Feed user={user} />}
           />
 
           <Route

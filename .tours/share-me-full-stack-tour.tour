@@ -191,6 +191,31 @@
       "file": "shareme-frontend/src/components/PinDetails.jsx",
       "description": "This add comment function is a function that patches the comment field of the pin in the sanity backend. it takes the setAddingComment to true an then it patches the pinId and setIfMissing the commetn array.  client\r\n        .patch(pinId)\r\n        .setIfMissing({ comments: [] })\r\n        .insert(\"after\", \"comments[-1]\", [\r\n          {\r\n            comment,\r\n            _key: uuidv4(),\r\n            postedBy: {\r\n              _type: \"postedBy\",\r\n              _ref: user._id,\r\n            },\r\n          },\r\n        ])\r\n        .commit()\r\n        .then(() => {\r\n          fetchPinDetails();\r\n          setComment(\"\");\r\n          setAddingComment(false);\r\n          window.location.reload();\r\n        });",
       "line": 18
+    },
+    {
+      "file": "shareme-frontend/src/components/UserProfile.jsx",
+      "description": "This useEffect function is used to fetch the user data from sanity to display the user details on the profile page.",
+      "line": 24
+    },
+    {
+      "file": "shareme-frontend/src/components/UserProfile.jsx",
+      "description": "This useEffect runs anytime the user Id changes which is in the useParams(). and re calls a new user data based on the user id",
+      "line": 32
+    },
+    {
+      "file": "shareme-frontend/src/components/UserProfile.jsx",
+      "description": "In the useEffect above, it runs anytime the userId from the navParams changes. So when the effect is running, just before the data for the user comes back, we run the spinner an then it goes away when the user data comes back.",
+      "line": 40
+    },
+    {
+      "file": "shareme-frontend/src/components/UserProfile.jsx",
+      "description": "This useEffect is used to determine the value of the text if it is created or saved. Depending on the text value, we use a specific query to get either the saved post or the created post through the client.fetch function",
+      "line": 40
+    },
+    {
+      "file": "shareme-frontend/src/components/UserProfile.jsx",
+      "description": "Google log out functionality.",
+      "line": 58
     }
   ],
   "ref": "main"

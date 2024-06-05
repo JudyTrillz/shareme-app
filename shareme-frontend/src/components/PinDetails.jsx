@@ -7,6 +7,7 @@ import { client, urlFor } from "../client";
 import MasonryLayout from "./MasonryLayout";
 import { pinDetailMorePinQuery, pinDetailQuery } from "../utils/Data";
 import Spinner from "./Spinner";
+import SignIn from "./SignIn.jsx";
 import { shortenUrl } from "../utils/url.js";
 
 const PinDetails = ({ user }) => {
@@ -78,7 +79,7 @@ const PinDetails = ({ user }) => {
           <img
             src={pinDetails?.image && urlFor(pinDetails.image).url()}
             className="rounded-t-3xl rounded-b-lg"
-            alt="user Pin image"
+            alt="user Post"
           />
         </div>
 
@@ -149,6 +150,8 @@ const PinDetails = ({ user }) => {
                 </div>
               </div>
             ))}
+
+            <div>{!user && <SignIn message={"Sign in to add Comments"} />}</div>
           </div>
 
           {/* CONTAINER FOR CREATING COMMENTs */}
@@ -170,7 +173,7 @@ const PinDetails = ({ user }) => {
                 className="flex-1 border-gray-100 outline-none border-2 p-2 rounded-2xl focus:border-gray-300"
                 name="comment"
                 id="comment"
-                placeholder="Add a comment"
+                placeholder="Add your comment"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
@@ -195,7 +198,9 @@ const PinDetails = ({ user }) => {
           <MasonryLayout pins={pins} />
         </>
       ) : (
-        <Spinner message={"Loading More Pins"} />
+        <div className="mt-2">
+          <Spinner message={"Loading More Pins"} />
+        </div>
       )}
     </>
   );
