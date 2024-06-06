@@ -216,6 +216,11 @@
       "file": "shareme-frontend/src/components/UserProfile.jsx",
       "description": "Google log out functionality.",
       "line": 58
+    },
+    {
+      "file": "shareme-frontend/src/App.jsx",
+      "description": "This final useEffect function is used to check if we have a user in the localStorage which we get after login. If we don't have it, we will navigate to the login page",
+      "line": 10
     }
   ],
   "ref": "main"
